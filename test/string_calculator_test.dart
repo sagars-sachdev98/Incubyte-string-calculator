@@ -13,5 +13,17 @@ void main() {
     test('returns 0 for empty string', () {
       expect(addNumbers.call(''), 0);
     });
+
+    test('returns the number for single number input', () {
+      expect(addNumbers.call('1'), 1);
+    });
+
+    test('sums two comma-separated numbers', () {
+      expect(addNumbers.call('1,5'), 6);
+    });
+
+    test('sums multiple numbers', () {
+      expect(addNumbers.call('1 ,2,3, ,4'), 10);
+    });
   });
 }
