@@ -15,5 +15,10 @@ void main() {
   assert(addNumbers.call(' 3 , 4 ,5 , 6 ') == 18);
 
   assert(addNumbers.call('1\n2,3') == 6);
+
+  assert(addNumbers.call('//;\n1;2') == 3);
+  assert(addNumbers.call('//|\n1|2|3') == 6);
+  assert(addNumbers.call('//#\n4#5#6') == 15);
+
   print('All asserts passed ✔');
 }

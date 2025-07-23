@@ -7,13 +7,18 @@ class StringCalculatorImpl implements StringCalculator {
     if (numbers.isEmpty) return 0;
 
     var separator = ',';
+
+    if (numbers.startsWith('//')) {
+      final nlIndex = numbers.indexOf('\n');
+      separator = numbers.substring(2, nlIndex);
+      numbers = numbers.substring(nlIndex + 1);
+    }
+
     numbers = numbers.replaceAll('\n', separator);
 
-    final parts = numbers.split(',');
-    if (parts.length == 1) {
-      return int.parse(parts.first.trim());
-    }
-    // two (or more) comma numbers
+    final parts = numbers.split(separator);
+
+  
     return parts
         .map((p) => p.trim())
         .where((t) => t.isNotEmpty)

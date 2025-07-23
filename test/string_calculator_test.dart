@@ -31,5 +31,11 @@ void main() {
     test('handles newline between numbers', () {
       expect(addNumbers.call('1\n2,3'), 6);
     });
+
+    test('supports custom delimiter header', () {
+      expect(addNumbers.call('//;\n1;2'), 3);
+      expect(addNumbers.call('//|\n1|2|3'), 6);
+      expect(addNumbers.call('//#\n4#5#6'), 15);
+    });
   });
 }
