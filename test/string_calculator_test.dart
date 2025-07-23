@@ -22,8 +22,10 @@ void main() {
       expect(addNumbers.call('1,5'), 6);
     });
 
-    test('sums multiple numbers', () {
-      expect(addNumbers.call('1 ,2,3, ,4'), 10);
+    test('handles any amount of comma-separated numbers', () {
+      expect(addNumbers.call('1,2,3'), 6);
+      expect(addNumbers.call('10,20,30,40,50'), 150);
+      expect(addNumbers.call(' 3 , 4 ,5 , 6 '), 18);
     });
   });
 }

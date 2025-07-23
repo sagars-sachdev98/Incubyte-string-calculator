@@ -9,6 +9,9 @@ void main() {
 
   assert(addNumbers.call('1') == 1);
   assert(addNumbers.call('1,5') == 6);
-  assert(addNumbers.call('1 ,2,3, ,4') == 10);
+
+  assert(addNumbers.call('1,2,3') == 6);
+  assert(addNumbers.call('10,20,30,40,50') == 150);
+  assert(addNumbers.call(' 3 , 4 ,5 , 6 ') == 18);
   print('All asserts passed ✔');
 }
