@@ -13,5 +13,7 @@ void main() {
   assert(addNumbers.call('1,2,3') == 6);
   assert(addNumbers.call('10,20,30,40,50') == 150);
   assert(addNumbers.call(' 3 , 4 ,5 , 6 ') == 18);
+
+  assert(addNumbers.call('1\n2,3') == 6);
   print('All asserts passed ✔');
 }

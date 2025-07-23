@@ -6,6 +6,9 @@ class StringCalculatorImpl implements StringCalculator {
     // empty string ⇒ 0
     if (numbers.isEmpty) return 0;
 
+    var separator = ',';
+    numbers = numbers.replaceAll('\n', separator);
+
     final parts = numbers.split(',');
     if (parts.length == 1) {
       return int.parse(parts.first.trim());

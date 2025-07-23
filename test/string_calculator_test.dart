@@ -27,5 +27,9 @@ void main() {
       expect(addNumbers.call('10,20,30,40,50'), 150);
       expect(addNumbers.call(' 3 , 4 ,5 , 6 '), 18);
     });
+
+    test('handles newline between numbers', () {
+      expect(addNumbers.call('1\n2,3'), 6);
+    });
   });
 }
