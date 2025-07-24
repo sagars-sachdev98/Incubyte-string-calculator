@@ -5,22 +5,27 @@ import 'package:incubyte_string_calculator/domain/usecases/add_numbers_usecase.d
 void main() {
   late AddNumbersUseCase addNumbers;
   addNumbers = AddNumbersUseCase(StringCalculatorImpl());
-  // Step 1: adding ints
+  // empty string -> 0
   assert(addNumbers.call('') == 0);
 
+  // single and two comma-separated numbers
   assert(addNumbers.call('1') == 1);
   assert(addNumbers.call('1,5') == 6);
 
+  // any amount of comma-separated numbers
   assert(addNumbers.call('1,2,3') == 6);
   assert(addNumbers.call('10,20,30,40,50') == 150);
   assert(addNumbers.call(' 3 , 4 ,5 , 6 ') == 18);
 
+  // allow new lines between numbers (as delimiter)
   assert(addNumbers.call('1\n2,3') == 6);
 
+  // custom delimiter header
   assert(addNumbers.call('//;\n1;2') == 3);
   assert(addNumbers.call('//|\n1|2|3') == 6);
   assert(addNumbers.call('//#\n4#5#6') == 15);
 
+  // throw exception with all negative
   try {
     addNumbers.call('-1,-2,3,-4');
     assert(false);
