@@ -1,3 +1,4 @@
+import 'package:incubyte_string_calculator/core/errors.dart';
 import 'package:incubyte_string_calculator/domain/string_calculator.dart';
 
 class StringCalculatorImpl implements StringCalculator {
@@ -18,11 +19,17 @@ class StringCalculatorImpl implements StringCalculator {
 
     final parts = numbers.split(separator);
 
-  
-    return parts
+    final values = parts
         .map((p) => p.trim())
         .where((t) => t.isNotEmpty)
         .map(int.parse)
-        .fold(0, (sum, e) => sum + e);
+        .toList();
+
+    final negatives = values.where((v) => v < 0).toList();
+    if (negatives.isNotEmpty) {
+      throw NegativeNumbersException(negatives);
+    }
+
+    return values.fold(0, (sum, v) => sum + v);
   }
 }
